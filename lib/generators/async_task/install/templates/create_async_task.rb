@@ -1,4 +1,4 @@
-class CreateAsyncTask < ActiveRecord::Migration
+class CreateAsyncTask < ActiveRecord::Migration[5.1]
   def change
     create_table :async_tasks do |t|
       t.string :task_name, null: false
