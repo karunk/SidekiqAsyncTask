@@ -4,20 +4,20 @@ A lightweight gem to ensure safe execution of asyncronous Sidekiq Jobs within a 
 
 ## Installation
 
-1) Add this line to your application's Gemfile:
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'async_task'
 ```
-2) And then execute:
+And then execute:
 
     $ bundle
 
-3) Generate migration files:
+Generate migration files:
 
     $ rails generate async_task:install
     
-4) Run an DB migration next
+Run an DB migration next
 
     $ rake db:migrate
 
