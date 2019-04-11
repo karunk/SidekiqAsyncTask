@@ -1,4 +1,4 @@
-# AsyncTask
+# Transactional Sidekiq Jobs
 
 A lightweight gem to ensure safe execution of asyncronous **Sidekiq Jobs** within a transaction in **Rails**. 
 
