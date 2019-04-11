@@ -1,8 +1,6 @@
 # AsyncTask
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/async_task`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A lightweight gem to ensure safe execution of asyncronous Sidekiq Jobs within a transaction in Rails. 
 
 ## Installation
 
@@ -20,9 +18,18 @@ Or install it yourself as:
 
     $ gem install async_task
 
+Run this next 
+```ruby
+    rails generate async_task:install
+```
+Run an DB migration next
+```ruby
+    rake db:migrate
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+
 
 ## Development
 
@@ -32,7 +39,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/async_task. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
