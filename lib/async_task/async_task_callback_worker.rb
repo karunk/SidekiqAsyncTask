@@ -8,7 +8,6 @@ module AsyncTask
     # The last arguement is task specific which is separated here and rest is passed on the worker as arguments.
     
     extend AsyncJobScheduler
-    include Sidekiq::Worker
     include ActiveSupport::Callbacks
 
     attr_accessor :task_id
