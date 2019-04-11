@@ -78,6 +78,6 @@ private
     def self.get_external_hash
       "async_external_hash_#{SecureRandom.hex}"
     end
-    
+
   end
 end
