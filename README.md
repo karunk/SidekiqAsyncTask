@@ -1,28 +1,49 @@
-# AsyncTask
+# Asynctask
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/async_task`. To experiment with that code, run `bin/console` for an interactive prompt.
+A lightweight gem to ensure safe execution of asyncronous **Sidekiq Jobs** within a transaction in **Rails** in a DB backed way. 
 
-TODO: Delete this and the text above, and describe your gem
+
+![Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpDQPNF3ypHlEtfyudqfzYWcV43lrMs_Wl38OdSuxcGJuPYJ2vig)
+![Logo](https://lab-report.s3.amazonaws.com/assets/post/featured_image/45/sidekiq.png)
+![Logo](https://www.softaculous.com/images/webuzo/softimages/61__logo.gif)
+![Logo](https://www.nvisia.com/hs-fs/hubfs/Evolution-Site-Pictures/Technologies/Color-Logos/Redis.png?width=100&name=Redis.png)
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'async_task'
+gem 'asynctask'
 ```
-
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Generate migration files:
 
-    $ gem install async_task
+    $ rails generate asynctask:install
+    
+Run an DB migration next
+
+    $ rake db:migrate
+
 
 ## Usage
+Simply inherit 
 
-TODO: Write usage instructions here
+```ruby
+    class HardWorker < AsyncTask::TransactionSupport
+      include Sidekiq::Worker
+      sidekiq_options retry: false
+
+      def perform_with_callback(*args)
+
+      end
+
+    end
+```
+
 
 ## Development
 
@@ -32,10 +53,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/async_task. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
+## Acknowledgments
+I'd like to thank [@Javeshgarg](https://github.com/Javeshgarg), Pawan Nagwani and [@dmonojit](https://github.com/dmonojit) for the inspiration behind this.
