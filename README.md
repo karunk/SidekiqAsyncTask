@@ -1,13 +1,20 @@
 # AsyncTask
 
-A lightweight gem to ensure safe execution of asyncronous Sidekiq Jobs within a transaction in Rails. 
+A lightweight gem to ensure safe execution of asyncronous **Sidekiq Jobs** within a transaction in **Rails**. 
+
+
+![Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpDQPNF3ypHlEtfyudqfzYWcV43lrMs_Wl38OdSuxcGJuPYJ2vig)
+![Logo](https://lab-report.s3.amazonaws.com/assets/post/featured_image/45/sidekiq.png)
+![Logo](https://www.softaculous.com/images/webuzo/softimages/61__logo.gif)
+![Logo](https://www.nvisia.com/hs-fs/hubfs/Evolution-Site-Pictures/Technologies/Color-Logos/Redis.png?width=100&name=Redis.png)
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'async_task'
+gem 'sidekiq-transactional-jobs'
 ```
 And then execute:
 
@@ -15,7 +22,7 @@ And then execute:
 
 Generate migration files:
 
-    $ rails generate async_task:install
+    $ rails generate sidekiq-transactional-jobs:install
     
 Run an DB migration next
 
@@ -23,7 +30,19 @@ Run an DB migration next
 
 
 ## Usage
+Simply inherit 
 
+```ruby
+    class HardWorker < SidekiqTransactionalJobs::TransactionSupport
+      include Sidekiq::Worker
+      sidekiq_options retry: false
+
+      def perform_with_callback(*args)
+
+      end
+
+    end
+```
 
 
 ## Development
