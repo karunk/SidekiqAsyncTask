@@ -1,5 +1,5 @@
 module AsyncTask
-  class AsyncTaskCallbackWorker
+  class TransactionSupport
     # Inherit any sidekiq worker from this to add support for transactional scheduling of sidekiq jobs as well
     # as callback support
     # To use this class, make the worker inherit from it and define the job in the

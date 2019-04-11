@@ -6,7 +6,7 @@ require 'async_task/async_task'
 
 require 'async_task/async_job_scheduler'
 
-require 'async_task/async_task_callback_worker'
+require 'async_task/transaction_support'
 
 # Generators
 require 'generators/async_task/install_generator'
