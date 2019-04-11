@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'async_task/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "async_task"
+  spec.name          = "asynctask"
   spec.version       = AsyncTask::VERSION
   spec.authors       = ["Karun"]
   spec.email         = ["karunk@live.com"]
