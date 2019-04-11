@@ -1,6 +1,6 @@
 # Asynctask
 
-A lightweight gem to ensure safe execution of asyncronous **Sidekiq Jobs** within a transaction in **Rails**. 
+A lightweight gem to ensure safe execution of asyncronous **Sidekiq Jobs** within a transaction in **Rails** in a DB backed way. 
 
 
 ![Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpDQPNF3ypHlEtfyudqfzYWcV43lrMs_Wl38OdSuxcGJuPYJ2vig)
