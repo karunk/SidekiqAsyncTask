@@ -19,13 +19,11 @@ Or install it yourself as:
     $ gem install async_task
 
 Run this next 
-```ruby
-    rails generate async_task:install
-```
+
 Run an DB migration next
-```ruby
-    rake db:migrate
-```
+
+    $ rake db:migrate
+
 
 ## Usage
 
