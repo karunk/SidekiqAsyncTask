@@ -1,12 +1,10 @@
 require "generator_spec"
 
 module AsyncTask
-  module Generators
     describe InstallGenerator, :type => :generator do
 
       root_dir = File.expand_path("../../../../../../tmp", __FILE__)
       destination root_dir
-
       before :all do
         prepare_destination
         run_generator
@@ -18,8 +16,8 @@ module AsyncTask
 
         assert_file migration_file[0],
           /class CreateAsyncTask < ActiveRecord::Migration/
+          
       end
 
     end
-  end
 end
