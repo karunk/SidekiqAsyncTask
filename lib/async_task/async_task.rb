@@ -7,6 +7,8 @@
 
 module AsyncTask
   class AsyncTask < ActiveRecord::Base
+    attr_accessor :should_schedule_job
+
     after_commit :schedule_job, on: :create
     scope :unprocessed, lambda { where(state: :scheduled) }
     scope :uninitiated, lambda { where(state: :uninitiated) }
@@ -25,9 +27,9 @@ module AsyncTask
     def schedule_job
       worker = self.task_name.constantize
       if self.perform_after.present?
-        #worker.perform_in((self.perform_after).seconds, *(self.payload), { async_external_hash: create_task_hash })
+        worker.perform_in((self.perform_after).seconds, *(self.payload), { async_external_hash: create_task_hash })
       else
-        #worker.perform_async(*(self.payload), { async_external_hash: "#{self.external_hash}__#{self.id}" })
+        worker.perform_async(*(self.payload), { async_external_hash: "#{self.external_hash}__#{self.id}" })
       end
     rescue StandardError => e
       error_data = [e.message, e.backtrace]
