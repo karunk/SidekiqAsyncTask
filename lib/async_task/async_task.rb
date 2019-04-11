@@ -18,27 +18,66 @@ module AsyncTask
       async_task
     end
 
+    def self.create_future_job!(task_name, payload, perform_after = nil)
+      self.create!(state: :uninitiated, task_name: task_name, perform_after: perform_after, payload: payload, external_hash: get_external_hash)
+    end
+
     def schedule_job
       worker = self.task_name.constantize
       if self.perform_after.present?
-        worker.perform_in((self.perform_after).seconds, *(self.payload), { async_external_hash: create_task_hash })
+        #worker.perform_in((self.perform_after).seconds, *(self.payload), { async_external_hash: create_task_hash })
       else
-        worker.perform_async(*(self.payload), { async_external_hash: "#{self.external_hash}__#{self.id}" })
+        #worker.perform_async(*(self.payload), { async_external_hash: "#{self.external_hash}__#{self.id}" })
       end
     rescue StandardError => e
       error_data = [e.message, e.backtrace]
       error_msg = "Error occurred while scheduling job in the AsyncTask with id #{self.id}. Error: #{error_data}. Please resolve immediately."
-      raise error_msg
+      raise InternalServerError.new(msg: error_msg) 
     end
 
     def create_task_hash
       "#{self.external_hash}__#{self.id}"
     end
 
-  private:
-  
+
+    def self.try_get_task_id_from_hash(task_hash)
+      if task_hash.is_a?(Hash) && task_hash.keys == ['async_external_hash']
+        task_hash, task_id = task_hash['async_external_hash'].split('__')
+        task = AsyncTask.find_by(id: task_id.to_i, external_hash: task_hash)
+        raise InternalServerError.new(msg: "Invalid Task Hash Provided") unless task.present?
+        task.id
+      end
+    end
+
+    def started?
+      self.state.to_sym == :started
+    end
+
+    def scheduled?
+      self.state.to_sym == :scheduled
+    end
+
+    def get_task_hask
+      { 'async_external_hash' => self.create_task_hash }
+    end
+
+    def scheduled_in_past?
+      (self.created_at + (self.perform_after.to_i).seconds + 1.minute) < Time.now
+    end
+
+    def uninitiated_in_past?
+      (self.updated_at + (self.perform_after.to_i).seconds + 1.minute) < Time.now
+    end
+
+    def uninitiated?
+      self.state.to_sym == :uninitiated
+    end
+
+private 
+
     def self.get_external_hash
       "async_external_hash_#{SecureRandom.hex}"
     end
-
+    
+  end
 end
