@@ -14,7 +14,7 @@ A lightweight gem to ensure safe execution of asyncronous **Sidekiq Jobs** withi
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sidekiq-transactional-jobs'
+gem 'asynctask'
 ```
 And then execute:
 
@@ -33,7 +33,7 @@ Run an DB migration next
 Simply inherit 
 
 ```ruby
-    class HardWorker < SidekiqTransactionalJobs::TransactionSupport
+    class HardWorker < AsyncTask::TransactionSupport
       include Sidekiq::Worker
       sidekiq_options retry: false
 
