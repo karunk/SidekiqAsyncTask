@@ -42,4 +42,4 @@ Bug reports and pull requests are welcome on GitHub. This project is intended to
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ## Acknowledgments
-I'd like to thank [@Javeshgarg](https://github.com/Javeshgarg), Pawan Nagwani and [dmonojit](https://github.com/dmonojit) for the inspiration behind this.
+I'd like to thank [@Javeshgarg](https://github.com/Javeshgarg), Pawan Nagwani and [@dmonojit](https://github.com/dmonojit) for the inspiration behind this.
