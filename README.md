@@ -22,7 +22,7 @@ And then execute:
 
 Generate migration files:
 
-    $ rails generate sidekiq-transactional-jobs:install
+    $ rails generate asynctask:install
     
 Run an DB migration next
 
