@@ -1,4 +1,4 @@
-# [SidekiqAsyncTask](https://rubygems.org/gems/sidekiq_async_task)
+# [SidekiqAsyncTask](http://vkarun.me/asynctask.html)
 
 A lightweight gem to ensure safe execution of asyncronous **Sidekiq Jobs** within a transaction in **Rails** in a DB backed way. 
 
