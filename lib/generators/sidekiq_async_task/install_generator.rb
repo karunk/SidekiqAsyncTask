@@ -1,7 +1,7 @@
 require 'rails/generators'
 require 'rails/generators/migration'
 
-module AsyncTask
+module SidekiqAsyncTask
   class InstallGenerator < ::Rails::Generators::Base
     include Rails::Generators::Migration
     desc "Add the migrations for AsyncTask"

@@ -4,7 +4,7 @@
 # Creates a model named AsyncTask to store details about the job like, job_id, status, retry counts etc.
 # When the transaction (inside which job is scheduled) is successfull, the task is schedules as a sidekiq job
 # But in case of an exception, when Rollback is encountered, it doesn't schedule the job.
-module AsyncTask
+module SidekiqAsyncTask
   module AsyncJobScheduler
 
     def perform_with_transaction_in( perform_after, *args )

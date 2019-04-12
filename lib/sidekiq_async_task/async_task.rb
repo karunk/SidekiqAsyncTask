@@ -5,7 +5,7 @@
 # STARTED : When the job is picked up to be executed, before the main perform for the worker (perform_with_callback) is called, its state is changed to `started`.
 # COMPLETED : If the job is successful, then the state is changed to `completed` otherwise, it is retried/rescheduled and the retry_count is incremented upon further processing.
 
-module AsyncTask
+module SidekiqAsyncTask
   class AsyncTask < ActiveRecord::Base
     attr_accessor :should_schedule_job
 

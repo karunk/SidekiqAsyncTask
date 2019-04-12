@@ -1,6 +1,6 @@
 require "generator_spec"
 
-module AsyncTask
+module SidekiqAsyncTask
     describe InstallGenerator, :type => :generator do
 
       root_dir = File.expand_path("../../../../../../tmp", __FILE__)
